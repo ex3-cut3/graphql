@@ -1,0 +1,32 @@
+{
+  "name": "graphql-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Kolbasen/graphql-server.git",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js",
+    "start-dev": "nodemon src/index.js",
+    "debug": "node --inspect src/index.js",
+    "lint": "npx eslint --ext .js .",
+    "lint:fix": "npx eslint --fix --ext .js .",
+    "prisma": "prisma db push && prisma migrate"
+  },
+  "dependencies": {
+    "@graphql-yoga/node": "^2.11.0",
+    "@prisma/client": "^4.0.0",
+    "graphql": "^16.5.0",
+    "graphql-ws": "^5.9.1",
+    "prisma": "^4.0.0",
+    "ws": "^8.8.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.20.2",
+    "nodemon": "^2.0.4"
+  },
+  "prisma": {
+    "schema": "database/schema.prisma"
+  }
+}

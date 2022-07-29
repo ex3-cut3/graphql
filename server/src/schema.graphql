@@ -1,0 +1,61 @@
+enum Sort {
+    asc
+    desc
+}
+
+input MessageOrderByInput {
+    text: Sort
+    id: Sort
+    likes: Sort
+    dislikes: Sort
+    createdAt: Sort
+}
+
+type Messages {
+    messageList: [Message!]!
+    count: Int!
+}
+
+input MessageInput {
+    text: String!
+}
+
+input ReviewInput {
+    text: String!
+    messageId: String!
+}
+
+type Mutation {
+    createMessage(message: MessageInput!): Message!
+    createReview(review: ReviewInput!): Review!
+    createLike(messageId: String!): Message!
+    createDislike(messageId: String!): Message!
+}
+
+type Subscription {
+    newMessage: Message
+    newLike: Message
+    newDislike: Message
+    newReviews: Message
+}
+
+type Query {
+    version: String!
+    messages(filter: String, skip: Int, take: Int, orderBy: MessageOrderByInput): Messages
+    reviews: [Review!]!
+}
+
+type Message {
+    id: String!
+    text: String!
+    reviews: [Review!]!
+    likes: Int!
+    dislikes: Int!
+    createdAt: String!
+}
+
+type Review {
+    id: String!
+    text: String!
+    message: Message!
+}
